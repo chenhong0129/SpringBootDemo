@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ucmed.mapper.TQuestionMapper" >
+  <resultMap id="BaseResultMap" type="cn.ucmed.model.TQuestion" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="session_id" property="sessionId" jdbcType="VARCHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="query1" property="query1" jdbcType="VARCHAR" />
+    <result column="query2" property="query2" jdbcType="VARCHAR" />
+    <result column="query3" property="query3" jdbcType="VARCHAR" />
+    <result column="choice" property="choice" jdbcType="VARCHAR" />
+    <result column="is_recommend" property="isRecommend" jdbcType="INTEGER" />
+    <result column="doctors" property="doctors" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="hospital_name" property="hospitalName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="temp1" property="temp1" jdbcType="VARCHAR" />
+    <result column="temp2" property="temp2" jdbcType="VARCHAR" />
+    <result column="temp3" property="temp3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, session_id, seq_no, query1, query2, query3, choice, is_recommend, doctors, is_delete, 
+    client_id, org_id, hospital_name, create_time, modify_time, temp1, temp2, temp3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ucmed.model.TQuestion" >
+    insert into t_question (id, session_id, seq_no, 
+      query1, query2, query3, 
+      choice, is_recommend, doctors, 
+      is_delete, client_id, org_id, 
+      hospital_name, create_time, modify_time, 
+      temp1, temp2, temp3
+      )
+    values (#{id,jdbcType=INTEGER}, #{sessionId,jdbcType=VARCHAR}, #{seqNo,jdbcType=INTEGER}, 
+      #{query1,jdbcType=VARCHAR}, #{query2,jdbcType=VARCHAR}, #{query3,jdbcType=VARCHAR}, 
+      #{choice,jdbcType=VARCHAR}, #{isRecommend,jdbcType=INTEGER}, #{doctors,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=INTEGER}, #{clientId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
+      #{hospitalName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ucmed.model.TQuestion" >
+    insert into t_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sessionId != null" >
+        session_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="query1 != null" >
+        query1,
+      </if>
+      <if test="query2 != null" >
+        query2,
+      </if>
+      <if test="query3 != null" >
+        query3,
+      </if>
+      <if test="choice != null" >
+        choice,
+      </if>
+      <if test="isRecommend != null" >
+        is_recommend,
+      </if>
+      <if test="doctors != null" >
+        doctors,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="hospitalName != null" >
+        hospital_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="temp1 != null" >
+        temp1,
+      </if>
+      <if test="temp2 != null" >
+        temp2,
+      </if>
+      <if test="temp3 != null" >
+        temp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sessionId != null" >
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="query1 != null" >
+        #{query1,jdbcType=VARCHAR},
+      </if>
+      <if test="query2 != null" >
+        #{query2,jdbcType=VARCHAR},
+      </if>
+      <if test="query3 != null" >
+        #{query3,jdbcType=VARCHAR},
+      </if>
+      <if test="choice != null" >
+        #{choice,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecommend != null" >
+        #{isRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="doctors != null" >
+        #{doctors,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalName != null" >
+        #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="temp1 != null" >
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ucmed.model.TQuestion" >
+    update t_question
+    <set >
+      <if test="sessionId != null" >
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="query1 != null" >
+        query1 = #{query1,jdbcType=VARCHAR},
+      </if>
+      <if test="query2 != null" >
+        query2 = #{query2,jdbcType=VARCHAR},
+      </if>
+      <if test="query3 != null" >
+        query3 = #{query3,jdbcType=VARCHAR},
+      </if>
+      <if test="choice != null" >
+        choice = #{choice,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecommend != null" >
+        is_recommend = #{isRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="doctors != null" >
+        doctors = #{doctors,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalName != null" >
+        hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="temp1 != null" >
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null" >
+        temp2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null" >
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ucmed.model.TQuestion" >
+    update t_question
+    set session_id = #{sessionId,jdbcType=VARCHAR},
+      seq_no = #{seqNo,jdbcType=INTEGER},
+      query1 = #{query1,jdbcType=VARCHAR},
+      query2 = #{query2,jdbcType=VARCHAR},
+      query3 = #{query3,jdbcType=VARCHAR},
+      choice = #{choice,jdbcType=VARCHAR},
+      is_recommend = #{isRecommend,jdbcType=INTEGER},
+      doctors = #{doctors,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      client_id = #{clientId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=VARCHAR},
+      temp3 = #{temp3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

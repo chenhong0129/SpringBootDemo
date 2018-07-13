@@ -1,0 +1,41 @@
+.stringcss {
+	line-height: 0px;
+	padding: 10px;
+	margin-left: -15px;
+	margin-right: -15px;
+	white-space: pre-wrap;
+	line-height: 20px;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.tableth {
+	color: #fff;
+	background-color: #428bca;
+	border-color: #428bca;
+	text-align: center;
+}
+
+.tablebody {
+	color: #31708f;
+	background-color: #fff;
+	line-height: 20px;
+}
+
+.img-circle {
+	background-color: #E5F3FF;
+	margin-top: -5px;
+	height: 12px;
+	width: 12px;
+	border: #e3e3e3 solid 1px;
+}
+
+.colorMyd {
+	background-color: #428bca;
+}
+.tbnr{
+	text-align: left;
+	width: 100px;
+	display: block;
+}

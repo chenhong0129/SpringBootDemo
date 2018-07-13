@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ucmed.mapper.TUserMapper">
+  <resultMap id="BaseResultMap" type="cn.ucmed.model.TUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ques_id" jdbcType="INTEGER" property="quesId" />
+    <result column="session_id" jdbcType="VARCHAR" property="sessionId" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="doct_id" jdbcType="INTEGER" property="doctId" />
+    <result column="doct_name" jdbcType="VARCHAR" property="doctName" />
+    <result column="doct_desc" jdbcType="VARCHAR" property="doctDesc" />
+    <result column="doct_title" jdbcType="VARCHAR" property="doctTitle" />
+    <result column="doct_sex" jdbcType="VARCHAR" property="doctSex" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="temp1" jdbcType="VARCHAR" property="temp1" />
+    <result column="temp2" jdbcType="VARCHAR" property="temp2" />
+    <result column="temp3" jdbcType="VARCHAR" property="temp3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ques_id, session_id, dept_id, dept_name, doct_id, doct_name, doct_desc, doct_title, 
+    doct_sex, create_time, modify_time, temp1, temp2, temp3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_doctors
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_doctors
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ucmed.model.TUser">
+    insert into t_doctors (id, ques_id, session_id, 
+      dept_id, dept_name, doct_id, 
+      doct_name, doct_desc, doct_title, 
+      doct_sex, create_time, modify_time, 
+      temp1, temp2, temp3
+      )
+    values (#{id,jdbcType=INTEGER}, #{quesId,jdbcType=INTEGER}, #{sessionId,jdbcType=VARCHAR}, 
+      #{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{doctId,jdbcType=INTEGER}, 
+      #{doctName,jdbcType=VARCHAR}, #{doctDesc,jdbcType=VARCHAR}, #{doctTitle,jdbcType=VARCHAR}, 
+      #{doctSex,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{temp1,jdbcType=VARCHAR}, #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ucmed.model.TUser">
+    insert into t_doctors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="quesId != null">
+        ques_id,
+      </if>
+      <if test="sessionId != null">
+        session_id,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="doctId != null">
+        doct_id,
+      </if>
+      <if test="doctName != null">
+        doct_name,
+      </if>
+      <if test="doctDesc != null">
+        doct_desc,
+      </if>
+      <if test="doctTitle != null">
+        doct_title,
+      </if>
+      <if test="doctSex != null">
+        doct_sex,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="temp1 != null">
+        temp1,
+      </if>
+      <if test="temp2 != null">
+        temp2,
+      </if>
+      <if test="temp3 != null">
+        temp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="quesId != null">
+        #{quesId,jdbcType=INTEGER},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctId != null">
+        #{doctId,jdbcType=INTEGER},
+      </if>
+      <if test="doctName != null">
+        #{doctName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctDesc != null">
+        #{doctDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="doctTitle != null">
+        #{doctTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="doctSex != null">
+        #{doctSex,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="temp1 != null">
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null">
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null">
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ucmed.model.TUser">
+    update t_doctors
+    <set>
+      <if test="quesId != null">
+        ques_id = #{quesId,jdbcType=INTEGER},
+      </if>
+      <if test="sessionId != null">
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctId != null">
+        doct_id = #{doctId,jdbcType=INTEGER},
+      </if>
+      <if test="doctName != null">
+        doct_name = #{doctName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctDesc != null">
+        doct_desc = #{doctDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="doctTitle != null">
+        doct_title = #{doctTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="doctSex != null">
+        doct_sex = #{doctSex,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="temp1 != null">
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null">
+        temp2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null">
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ucmed.model.TUser">
+    update t_doctors
+    set ques_id = #{quesId,jdbcType=INTEGER},
+      session_id = #{sessionId,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      doct_id = #{doctId,jdbcType=INTEGER},
+      doct_name = #{doctName,jdbcType=VARCHAR},
+      doct_desc = #{doctDesc,jdbcType=VARCHAR},
+      doct_title = #{doctTitle,jdbcType=VARCHAR},
+      doct_sex = #{doctSex,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=VARCHAR},
+      temp3 = #{temp3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.ucmed.model.TUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="session_id" jdbcType="VARCHAR" property="sessionId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birth" jdbcType="VARCHAR" property="birth" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+    <result column="client_id" jdbcType="VARCHAR" property="clientId" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="id_delete" jdbcType="INTEGER" property="idDelete" />
+    <result column="branch_id" jdbcType="VARCHAR" property="branchId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="temp1" jdbcType="VARCHAR" property="temp1" />
+    <result column="temp2" jdbcType="VARCHAR" property="temp2" />
+    <result column="temp3" jdbcType="VARCHAR" property="temp3" />
+    <result column="temp4" jdbcType="VARCHAR" property="temp4" />
+    <result column="temp5" jdbcType="VARCHAR" property="temp5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, session_id, name, sex, birth, wechat, id_card, card_no, client_id, org_id, id_delete, 
+    branch_id, create_time, modify_time, temp1, temp2, temp3, temp4, temp5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.ucmed.model.TUser">
+    insert into t_user (id, session_id, name, 
+      sex, birth, wechat, 
+      id_card, card_no, client_id, 
+      org_id, id_delete, branch_id, 
+      create_time, modify_time, temp1, 
+      temp2, temp3, temp4, 
+      temp5)
+    values (#{id,jdbcType=INTEGER}, #{sessionId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{birth,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{idCard,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR}, #{clientId,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=VARCHAR}, #{idDelete,jdbcType=INTEGER}, #{branchId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{temp1,jdbcType=VARCHAR}, 
+      #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}, #{temp4,jdbcType=VARCHAR}, 
+      #{temp5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ucmed.model.TUser">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sessionId != null">
+        session_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="cardNo != null">
+        card_no,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="idDelete != null">
+        id_delete,
+      </if>
+      <if test="branchId != null">
+        branch_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="temp1 != null">
+        temp1,
+      </if>
+      <if test="temp2 != null">
+        temp2,
+      </if>
+      <if test="temp3 != null">
+        temp3,
+      </if>
+      <if test="temp4 != null">
+        temp4,
+      </if>
+      <if test="temp5 != null">
+        temp5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="idDelete != null">
+        #{idDelete,jdbcType=INTEGER},
+      </if>
+      <if test="branchId != null">
+        #{branchId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="temp1 != null">
+        #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null">
+        #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null">
+        #{temp3,jdbcType=VARCHAR},
+      </if>
+      <if test="temp4 != null">
+        #{temp4,jdbcType=VARCHAR},
+      </if>
+      <if test="temp5 != null">
+        #{temp5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ucmed.model.TUser">
+    update t_user
+    <set>
+      <if test="sessionId != null">
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="idDelete != null">
+        id_delete = #{idDelete,jdbcType=INTEGER},
+      </if>
+      <if test="branchId != null">
+        branch_id = #{branchId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="temp1 != null">
+        temp1 = #{temp1,jdbcType=VARCHAR},
+      </if>
+      <if test="temp2 != null">
+        temp2 = #{temp2,jdbcType=VARCHAR},
+      </if>
+      <if test="temp3 != null">
+        temp3 = #{temp3,jdbcType=VARCHAR},
+      </if>
+      <if test="temp4 != null">
+        temp4 = #{temp4,jdbcType=VARCHAR},
+      </if>
+      <if test="temp5 != null">
+        temp5 = #{temp5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ucmed.model.TUser">
+    update t_user
+    set session_id = #{sessionId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      id_delete = #{idDelete,jdbcType=INTEGER},
+      branch_id = #{branchId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      temp1 = #{temp1,jdbcType=VARCHAR},
+      temp2 = #{temp2,jdbcType=VARCHAR},
+      temp3 = #{temp3,jdbcType=VARCHAR},
+      temp4 = #{temp4,jdbcType=VARCHAR},
+      temp5 = #{temp5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

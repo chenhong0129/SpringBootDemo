@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta content="text/html;charset=utf-8"></meta>
+    <script src="/static/bootstrap/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css"></link>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <title>study-freemarker</title>
+</head>
+<body>
+<p>list长度：${list?size}</p>
+<#if list?exists>
+    <#list list as key>
+        <table>
+            <tr>
+                <td>${key.name}</td>
+                <td>${key.sex}</td>
+                <td>${key.age}</td>
+            </tr>
+        </table>
+    </#list>
+</#if>
+
+</body>
+</html>
